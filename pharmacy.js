@@ -6,14 +6,14 @@ export class Drug {
     this.expiresIn = expiresIn;
     this.benefit = benefit;
   }
-}
 
-function clamp(value) {
-  return Math.max(0, Math.min(value, 50));
-}
+  static clamp(drugBenefit) {
+    return Math.max(0, Math.min(drugBenefit, 50));
+  }
 
-function isExpired(drug) {
-  return drug.expiresIn < 0;
+  static isExpired(drug) {
+    return drug.expiresIn < 0;
+  }
 }
 
 export class Pharmacy {
@@ -33,18 +33,18 @@ export class Pharmacy {
 
       if (typeof config.customUpdater === "function") {
         config.customUpdater(drug);
-        drug.benefit = clamp(drug.benefit);
+        drug.benefit = Drug.clamp(drug.benefit);
 
         return;
       }
 
-      if (!isExpired(drug)) {
+      if (!Drug.isExpired(drug)) {
         drug.benefit -= config.baseDegrade;
       } else {
         drug.benefit -= config.expiredDegrade;
       }
 
-      drug.benefit = clamp(drug.benefit);
+      drug.benefit = Drug.clamp(drug.benefit);
     });
 
     return this.drugs;
