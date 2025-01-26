@@ -1,5 +1,5 @@
 export const DRUG_CONFIG = {
-  "Doliprane": {
+  Doliprane: {
     baseDegrade: 1,
     expiredDegrade: 2,
     neverExpires: false,
@@ -11,7 +11,7 @@ export const DRUG_CONFIG = {
     neverExpires: false,
     customUpdater: null,
   },
-  "Fervex": {
+  Fervex: {
     baseDegrade: 0,
     expiredDegrade: 0,
     neverExpires: false,
@@ -39,13 +39,13 @@ export const DRUG_CONFIG = {
     neverExpires: true,
     customUpdater: null,
   },
-  "Dafalgan": {
+  Dafalgan: {
     baseDegrade: 2,
     expiredDegrade: 4,
     neverExpires: false,
     customUpdater: null,
   },
-  "_default": {
+  _default: {
     baseDegrade: 1,
     expiredDegrade: 2,
     neverExpires: false,
