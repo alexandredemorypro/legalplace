@@ -47,6 +47,12 @@ const DRUG_CONFIG = {
     neverExpires: true,
     customUpdater: null,
   },
+  "Dafalgan": {
+    baseDegrade: 2,
+    expiredDegrade: 4,
+    neverExpires: false,
+    customUpdater: null,
+  },
   "_default": {
     baseDegrade: 1,
     expiredDegrade: 2,
