@@ -86,4 +86,26 @@ describe("Pharmacy", () => {
       expect(pharmacy.drugs[0]).toEqual(new Drug("Magic Pill", 5, 10));
     });
   });
+
+  describe("Dafalgan", () => {
+    it("should degrade benefit twice as fast as normal (base degrade = 2)", () => {
+      const pharmacy = new Pharmacy([new Drug("Dafalgan", 5, 10)]);
+      pharmacy.updateBenefitValue();
+      expect(pharmacy.drugs[0]).toEqual(new Drug("Dafalgan", 4, 8));
+    });
+
+    it("should degrade benefit by 4 after expiry", () => {
+      const pharmacy = new Pharmacy([new Drug("Dafalgan", 0, 10)]);
+      pharmacy.updateBenefitValue();
+      expect(pharmacy.drugs[0]).toEqual(new Drug("Dafalgan", -1, 6));
+    });
+
+    it("should not go below 0", () => {
+      const pharmacy = new Pharmacy([new Drug("Dafalgan", 1, 1)]);
+      pharmacy.updateBenefitValue();
+      expect(pharmacy.drugs[0]).toEqual(new Drug("Dafalgan", 0, 0));
+      pharmacy.updateBenefitValue();
+      expect(pharmacy.drugs[0]).toEqual(new Drug("Dafalgan", -1, 0));
+    });
+  });
 });
