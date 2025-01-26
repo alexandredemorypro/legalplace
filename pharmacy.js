@@ -11,8 +11,8 @@ export class Drug {
     return Math.max(0, Math.min(drugBenefit, 50));
   }
 
-  static isExpired(drug) {
-    return drug.expiresIn < 0;
+  static isExpired(drugExpiresIn) {
+    return drugExpiresIn < 0;
   }
 }
 
@@ -38,7 +38,7 @@ export class Pharmacy {
         return;
       }
 
-      if (!Drug.isExpired(drug)) {
+      if (!Drug.isExpired(drug.expiresIn)) {
         drug.benefit -= config.baseDegrade;
       } else {
         drug.benefit -= config.expiredDegrade;
